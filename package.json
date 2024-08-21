@@ -1,0 +1,23 @@
+{
+  "name": "script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --loader ts-node/esm generate-repos.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^21.0.2",
+    "@types/node": "^20.11.19",
+    "axios": "^1.7.4",
+    "dotenv": "^16.4.5",
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  }
+}
