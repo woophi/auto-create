@@ -1,9 +1,14 @@
 import { Octokit } from '@octokit/rest';
 import { AxiosError } from 'axios';
+import chalk from 'chalk';
 import { exec } from 'child_process';
 import dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as path from 'path';
+
+const errorStyle = chalk.bold.red;
+const successStyle = chalk.bold.green;
+const vaporStyle = chalk.bgMagenta.bold.cyan;
 
 dotenv.config({
   path: '.env.local',
@@ -27,7 +32,7 @@ const createRepo = async (repoName: string) => {
       name: repoName,
     });
 
-    console.log(`Repository created,`, response.data.ssh_url);
+    console.log(vaporStyle(`Repository created,`), response.data.ssh_url);
     return response.data.ssh_url;
   } catch (e) {
     const error = e as AxiosError;
@@ -71,7 +76,7 @@ const copyDirectoryRecursiveSync = (source: string, destination: string, omitDir
 
     // Skip the directory you want to omit
     if (entry.isDirectory() && omitDirs.includes(entry.name)) {
-      console.log(`Omitting directory: ${srcPath}`);
+      console.log(vaporStyle('Omitting directory:'), srcPath);
       continue;
     }
 
@@ -113,7 +118,7 @@ const updatePagesSettings = async (repo: string) => {
       },
     });
 
-    console.log(`GitHub Pages branch updated to: gh-pages`);
+    console.log(vaporStyle('GitHub Pages branch updated to: gh-pages'));
   } catch (e) {
     const error = e as AxiosError;
     console.error('Error updating GitHub Pages settings:', error.response ? error.response.data : error.message);
@@ -124,7 +129,7 @@ const wait = (ms: number) => new Promise<void>(res => setTimeout(() => res(), ms
 
 for (let index = config.min; index <= config.max; index++) {
   const repoName = `${config.nameStarts}${index}`;
-  console.debug('START with', repoName);
+  console.debug(successStyle('START with'), repoName);
   const sshLink = await createRepo(repoName);
   if (sshLink) {
     await cloneRepo(sshLink);
@@ -142,11 +147,11 @@ await wait(2 * 60 * 1000);
 
 for (let index = config.min; index <= config.max; index++) {
   const repoName = `${config.nameStarts}${index}`;
-  console.debug('create pages for', repoName);
+  console.debug(vaporStyle('create pages for'), repoName);
   await updatePagesSettings(repoName);
 }
 
 for (let index = config.min; index <= config.max; index++) {
   const repoName = `${config.nameStarts}${index}`;
-  console.debug('url', `https://woophi.github.io/${repoName}`);
+  console.debug(errorStyle('url'), `https://woophi.github.io/${repoName}`);
 }
