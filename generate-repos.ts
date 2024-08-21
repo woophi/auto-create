@@ -143,7 +143,13 @@ for (let index = config.min; index <= config.max; index++) {
   }
 }
 
-await wait(2 * 60 * 1000);
+console.debug(vaporStyle('Waiting two minutes'));
+
+for (let index = 0; index < 120; index++) {
+  await wait(1000);
+  const left = 120 - index;
+  console.debug(vaporStyle('Time left is'), `${left > 60 ? 1 : 0}:${left > 60 ? left - 60 : left}`);
+}
 
 for (let index = config.min; index <= config.max; index++) {
   const repoName = `${config.nameStarts}${index}`;
