@@ -19,11 +19,11 @@ const octokit = new Octokit({
 });
 
 const config = {
-  nameStarts: 'ghk_3149_',
-  min: 6,
-  max: 11,
-  copyFrom: '../ghk_credit_v2',
-  analyticsVariant: 3149,
+  nameStarts: 'ghk_3301_v',
+  min: 2,
+  max: 3,
+  copyFrom: '../ghk_3301_v1',
+  analyticsVariant: 3301,
 };
 
 const createRepo = async (repoName: string) => {
@@ -134,10 +134,10 @@ for (let index = config.min; index <= config.max; index++) {
   if (sshLink) {
     await cloneRepo(sshLink);
     copyDirectoryRecursiveSync(config.copyFrom, `../${repoName}`, ['node_modules', '.git']);
-    replaceInFile(`../${repoName}/package.json`, 'ghk_3148_2', repoName);
-    replaceInFile(`../${repoName}/src/ls/index.ts`, 'ghk_3148_2', repoName);
-    replaceInFile(`../${repoName}/src/utils/events.ts`, `'3148'`, `'${config.analyticsVariant}'`);
-    replaceInFile(`../${repoName}/src/utils/events.ts`, `3148_2`, `${config.analyticsVariant}_${index}`);
+    replaceInFile(`../${repoName}/package.json`, 'ghk_3301_v1', repoName);
+    replaceInFile(`../${repoName}/src/ls/index.ts`, 'ghk_3301_v1', repoName);
+    // replaceInFile(`../${repoName}/src/utils/events.ts`, `'3148'`, `'${config.analyticsVariant}'`);
+    // replaceInFile(`../${repoName}/src/utils/events.ts`, `3148_2`, `${config.analyticsVariant}_${index}`);
 
     await commitChanges(repoName);
   }
