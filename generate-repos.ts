@@ -19,12 +19,12 @@ const octokit = new Octokit({
 });
 
 const config = {
-  nameStarts: 'ghk_3287_',
-  min: 1,
-  max: 2,
-  copyFrom: '../ghk_pfm',
-  analyticsVariant: 3301,
-  replaceInFile: 'ghk_pfm'
+  nameStarts: 'ghk_3301_v',
+  min: 4,
+  max: 6,
+  copyFrom: '../ghk_3301_v1',
+  analyticsVariant: 'var',
+  replaceInFile: 'ghk_3301_v1',
 };
 
 const createRepo = async (repoName: string) => {
@@ -138,7 +138,7 @@ for (let index = config.min; index <= config.max; index++) {
     replaceInFile(`../${repoName}/package.json`, config.replaceInFile, repoName);
     replaceInFile(`../${repoName}/src/ls/index.ts`, config.replaceInFile, repoName);
     // replaceInFile(`../${repoName}/src/utils/events.ts`, `'3148'`, `'${config.analyticsVariant}'`);
-    // replaceInFile(`../${repoName}/src/utils/events.ts`, `3148_2`, `${config.analyticsVariant}_${index}`);
+    replaceInFile(`../${repoName}/src/utils/events.ts`, `var1`, `${config.analyticsVariant}${index}`);
 
     await commitChanges(repoName);
   }
