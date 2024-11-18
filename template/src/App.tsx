@@ -1,7 +1,7 @@
 import { ButtonMobile } from '@alfalab/core-components/button/mobile';
 import { Gap } from '@alfalab/core-components/gap';
 import { Typography } from '@alfalab/core-components/typography';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { LS, LSKeys } from './ls';
 import { appSt } from './style.css';
 import { ThxLayout } from './thx/ThxLayout';
@@ -12,7 +12,7 @@ export const App = () => {
   const [err, setError] = useState('');
   const [thxShow, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
 
-  const submit = useCallback(() => {
+  const submit = () => {
     if (!accountNumber) {
       setError('Укажите номер лицевого счёта');
       return;
@@ -30,7 +30,7 @@ export const App = () => {
       setThx(true);
       setLoading(false);
     });
-  }, [accountNumber, checked, checked2, checked3, email, limit]);
+  };
 
   if (thxShow) {
     return <ThxLayout />;
