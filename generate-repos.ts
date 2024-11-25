@@ -19,12 +19,12 @@ const octokit = new Octokit({
 });
 
 const config = {
-  nameStarts: 'ghk_3870_',
+  nameStarts: 'ghk_3679_',
   min: 2,
-  max: 3,
-  copyFrom: '../ghk_3870_1',
+  max: 6,
+  copyFrom: '../ghk_3679_1',
   analyticsVariant: 'Variant',
-  replaceInFile: 'ghk_3870_1',
+  replaceInFile: 'ghk_3679_1',
 };
 
 const createRepo = async (repoName: string) => {
