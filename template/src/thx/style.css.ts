@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 const container = style({
-  display: 'flx',
+  display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
