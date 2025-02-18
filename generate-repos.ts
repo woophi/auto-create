@@ -19,11 +19,11 @@ const octokit = new Octokit({
 });
 
 const config = {
-  nameStarts: 'ghk_4383_',
-  min: 4,
-  max: 4,
-  copyFrom: '../ghk_4205_5',
-  replaceInFile: 'ghk_4205_5',
+  nameStarts: 'ghk_4385_',
+  min: 5,
+  max: 6,
+  copyFrom: '../ghk_4385_2',
+  replaceInFile: 'ghk_4385_2',
 };
 
 const createRepo = async (repoName: string) => {
@@ -136,9 +136,9 @@ for (let index = config.min; index <= config.max; index++) {
     copyDirectoryRecursiveSync(config.copyFrom, `../${repoName}`, ['node_modules', '.git']);
     replaceInFile(`../${repoName}/package.json`, config.replaceInFile, repoName);
     replaceInFile(`../${repoName}/src/ls/index.ts`, config.replaceInFile, repoName);
-    replaceInFile(`../${repoName}/src/utils/events.ts`, 'var1', `var${index}`);
-    replaceInFile(`../${repoName}/src/App.tsx`, '_var1', `_var${index}`);
-    replaceInFile(`../${repoName}/src/thx/ThxLayout.tsx`, '_var1', `_var${index}`);
+    replaceInFile(`../${repoName}/src/utils/events.ts`, 'var2', `var${index}`);
+    replaceInFile(`../${repoName}/src/App.tsx`, '_var2', `_var${index}`);
+    replaceInFile(`../${repoName}/src/thx/ThxLayout.tsx`, '_var2', `_var${index}`);
 
     await commitChanges(repoName);
   }
