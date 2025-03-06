@@ -19,8 +19,8 @@ const octokit = new Octokit({
 });
 
 const config = {
-  nameStarts: 'ghk_4429_',
-  min: 3,
+  nameStarts: 'ghk_4563_',
+  min: 1,
   max: 4,
   copyFrom: '../ghk_4429_1',
   replaceInFile: 'ghk_4429_1',
