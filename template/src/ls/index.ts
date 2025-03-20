@@ -1,9 +1,11 @@
 export const enum LSKeys {
   ShowThx = 'ab_show_thx_ghk_3870_1',
+  UserId = 'ab_UserId_ghk_3870_1',
 }
 
 export interface LSData {
   [LSKeys.ShowThx]: boolean | null;
+  [LSKeys.UserId]: number | null;
 }
 
 const getItem = <K extends LSKeys>(key: K, defaultValue: LSData[K]): LSData[K] => {

@@ -1,7 +1,7 @@
 import { ButtonMobile } from '@alfalab/core-components/button/mobile';
 import { Gap } from '@alfalab/core-components/gap';
 import { Typography } from '@alfalab/core-components/typography';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LS, LSKeys } from './ls';
 import { appSt } from './style.css';
 import { ThxLayout } from './thx/ThxLayout';
@@ -11,6 +11,12 @@ export const App = () => {
   const [loading, setLoading] = useState(false);
   const [err, setError] = useState('');
   const [thxShow, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
+
+  useEffect(() => {
+    if (!LS.getItem(LSKeys.UserId, null)) {
+      LS.setItem(LSKeys.UserId, Date.now());
+    }
+  }, []);
 
   const submit = () => {
     if (!accountNumber) {
