@@ -1,3 +1,5 @@
+import { LS, LSKeys } from '../ls';
+
 declare global {
   interface Window {
     dataLayer: unknown[];
@@ -25,7 +27,7 @@ export const sendDataToGA = async (payload: Payload) => {
       {
         redirect: 'follow',
         method: 'POST',
-        body: JSON.stringify({ date, ...payload, variant: 'variant1' }),
+        body: JSON.stringify({ date, ...payload, variant: 'variant1', id: LS.getItem(LSKeys.UserId, 0) }),
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
         },
