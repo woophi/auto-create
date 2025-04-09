@@ -34,7 +34,10 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild"
+      "@swc/core",
+      "core-js",
+      "esbuild",
+      "swiper"
     ]
   }
 }
