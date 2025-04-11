@@ -20,10 +20,10 @@ const octokit = new Octokit({
 
 const config = {
   nameStarts: 'ghk_4891_',
-  min: 1,
-  max: 1,
-  copyFrom: '../ghk_4581_1',
-  replaceInFile: 'ghk_4581_1',
+  min: 2,
+  max: 5,
+  copyFrom: '../ghk_4891_1',
+  replaceInFile: 'ghk_4891_1',
 };
 
 const createRepo = async (repoName: string) => {
@@ -139,7 +139,7 @@ for (let index = config.min; index <= config.max; index++) {
     replaceInFile(`../${repoName}/src/utils/events.ts`, 'var1', `var${index}`);
     replaceInFile(`../${repoName}/src/App.tsx`, '_var1', `_var${index}`);
     replaceInFile(`../${repoName}/src/thx/ThxLayout.tsx`, '_var1', `_var${index}`);
-    replaceInFile(`../${repoName}/src/App.tsx`, '4581_', `4891_`);
+    // replaceInFile(`../${repoName}/src/App.tsx`, '4581_', `4891_`);
 
     await commitChanges(repoName);
   }
