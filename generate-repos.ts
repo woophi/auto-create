@@ -13,7 +13,7 @@ const vaporStyle = chalk.bgMagenta.bold.cyan;
 dotenv.config({
   path: '.env.local',
 });
-const owner = 'woophi';
+const owner = process.env.GH_OWNER || 'woophi';
 const octokit = new Octokit({
   auth: process.env.GH_TOKEN,
 });
@@ -145,21 +145,4 @@ for (let index = config.min; index <= config.max; index++) {
   }
 }
 
-console.debug(vaporStyle('Waiting two minutes'));
-
-for (let index = 0; index < 120; index++) {
-  await wait(1000);
-  const left = 120 - index;
-  console.debug(vaporStyle('Time left is'), `${left > 60 ? 1 : 0}:${left > 60 ? left - 60 : left}`);
-}
-
-for (let index = config.min; index <= config.max; index++) {
-  const repoName = `${config.nameStarts}${index}`;
-  console.debug(vaporStyle('create pages for'), repoName);
-  await updatePagesSettings(repoName);
-}
-
-for (let index = config.min; index <= config.max; index++) {
-  const repoName = `${config.nameStarts}${index}`;
-  console.debug(errorStyle('url'), `https://woophi.github.io/${repoName}`);
-}
+console.debug(vaporStyle('updatePagesSettings in separate command'));
