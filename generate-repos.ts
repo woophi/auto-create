@@ -5,26 +5,17 @@ import { exec } from 'child_process';
 import dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as path from 'path';
+import { configs, RepoConfig } from './data.js';
 
-const errorStyle = chalk.bold.red;
 const successStyle = chalk.bold.green;
 const vaporStyle = chalk.bgMagenta.bold.cyan;
 
 dotenv.config({
   path: '.env.local',
 });
-const owner = process.env.GH_OWNER || 'woophi';
 const octokit = new Octokit({
   auth: process.env.GH_TOKEN,
 });
-
-const config = {
-  nameStarts: 'ghk_4893_',
-  min: 1,
-  max: 2,
-  copyFrom: '../ghk_5010_1',
-  replaceInFile: 'ghk_5010_1',
-};
 
 const createRepo = async (repoName: string) => {
   try {
@@ -108,41 +99,32 @@ const commitChanges = async (directory: string) => {
   }
 };
 
-const updatePagesSettings = async (repo: string) => {
-  try {
-    await octokit.rest.repos.createPagesSite({
-      owner,
-      repo,
-      source: {
-        branch: 'gh-pages',
-      },
-    });
+const runConfig = async (cfg: RepoConfig) => {
+  for (let index = cfg.min; index <= cfg.max; index++) {
+    const repoName = `${cfg.nameStarts}${index}`;
+    console.debug(successStyle('START with'), repoName);
+    const sshLink = await createRepo(repoName);
+    if (sshLink) {
+      await cloneRepo(sshLink);
+      copyDirectoryRecursiveSync(cfg.copyFrom, `../${repoName}`, ['node_modules', '.git']);
+      replaceInFile(`../${repoName}/package.json`, cfg.replaceInFile, repoName);
+      replaceInFile(`../${repoName}/src/ls/index.ts`, cfg.replaceInFile, repoName);
+      // replaceInFile(`../${repoName}/src/utils/events.ts`, 'var1', `var${index}`);
+      // replaceInFile(`../${repoName}/src/App.tsx`, '_var1', `_var${index}`);
+      // replaceInFile(`../${repoName}/src/thx/ThxLayout.tsx`, '_var1', `_var${index}`);
+      replaceInFile(`../${repoName}/src/App.tsx`, '4920_', `may_ios_`);
 
-    console.log(vaporStyle('GitHub Pages branch updated to: gh-pages'));
-  } catch (e) {
-    const error = e as AxiosError;
-    console.error('Error updating GitHub Pages settings:', error.response ? error.response.data : error.message);
+      await commitChanges(repoName);
+    }
   }
 };
 
-const wait = (ms: number) => new Promise<void>(res => setTimeout(() => res(), ms));
-
-for (let index = config.min; index <= config.max; index++) {
-  const repoName = `${config.nameStarts}${index}`;
-  console.debug(successStyle('START with'), repoName);
-  const sshLink = await createRepo(repoName);
-  if (sshLink) {
-    await cloneRepo(sshLink);
-    copyDirectoryRecursiveSync(config.copyFrom, `../${repoName}`, ['node_modules', '.git']);
-    replaceInFile(`../${repoName}/package.json`, config.replaceInFile, repoName);
-    replaceInFile(`../${repoName}/src/ls/index.ts`, config.replaceInFile, repoName);
-    replaceInFile(`../${repoName}/src/utils/events.ts`, 'var1', `var${index}`);
-    replaceInFile(`../${repoName}/src/App.tsx`, '_var1', `_var${index}`);
-    replaceInFile(`../${repoName}/src/thx/ThxLayout.tsx`, '_var1', `_var${index}`);
-    // replaceInFile(`../${repoName}/src/App.tsx`, '4581_', `4891_`);
-
-    await commitChanges(repoName);
+const runConfigs = async () => {
+  for (const cfg of configs) {
+    await runConfig(cfg);
   }
-}
+};
+
+await runConfigs();
 
 console.debug(vaporStyle('updatePagesSettings in separate command'));

@@ -2,6 +2,7 @@ import { Octokit } from '@octokit/rest';
 import { AxiosError } from 'axios';
 import chalk from 'chalk';
 import dotenv from 'dotenv';
+import { configs, RepoConfig } from './data.js';
 
 const errorStyle = chalk.bold.red;
 const vaporStyle = chalk.bgMagenta.bold.cyan;
@@ -13,14 +14,6 @@ const owner = process.env.GH_OWNER || 'woophi';
 const octokit = new Octokit({
   auth: process.env.GH_TOKEN,
 });
-
-const config = {
-  nameStarts: 'ghk_4893_',
-  min: 1,
-  max: 2,
-  copyFrom: '../ghk_5010_1',
-  replaceInFile: 'ghk_5010_1',
-};
 
 const updatePagesSettings = async (repo: string) => {
   try {
@@ -39,13 +32,23 @@ const updatePagesSettings = async (repo: string) => {
   }
 };
 
-for (let index = config.min; index <= config.max; index++) {
-  const repoName = `${config.nameStarts}${index}`;
-  console.debug(vaporStyle('create pages for'), repoName);
-  await updatePagesSettings(repoName);
-}
+const runPageCmd = async (cfg: RepoConfig) => {
+  for (let index = cfg.min; index <= cfg.max; index++) {
+    const repoName = `${cfg.nameStarts}${index}`;
+    console.debug(vaporStyle('create pages for'), repoName);
+    await updatePagesSettings(repoName);
+  }
 
-for (let index = config.min; index <= config.max; index++) {
-  const repoName = `${config.nameStarts}${index}`;
-  console.debug(errorStyle('url'), `https://woophi.github.io/${repoName}`);
-}
+  for (let index = cfg.min; index <= cfg.max; index++) {
+    const repoName = `${cfg.nameStarts}${index}`;
+    console.debug(errorStyle('url'), `https://${owner}.github.io/${repoName}`);
+  }
+};
+
+const run = async () => {
+  for (const cfg of configs) {
+    await runPageCmd(cfg);
+  }
+};
+
+await run();

@@ -1,0 +1,44 @@
+[
+  {
+    "nameStarts": "ghk_weekend_ios_",
+    "min": 1,
+    "max": 1,
+    "copyFrom": "../ghk_4920_1",
+    "replaceInFile": "ghk_4920_1"
+  },
+  {
+    "nameStarts": "ghk_weekend_ios_",
+    "min": 2,
+    "max": 2,
+    "copyFrom": "../ghk_4920_2",
+    "replaceInFile": "ghk_4920_2"
+  },
+  {
+    "nameStarts": "ghk_weekend_ios_",
+    "min": 3,
+    "max": 3,
+    "copyFrom": "../ghk_4920_3",
+    "replaceInFile": "ghk_4920_3"
+  },
+  {
+    "nameStarts": "ghk_weekend_ios_",
+    "min": 4,
+    "max": 4,
+    "copyFrom": "../ghk_4920_4",
+    "replaceInFile": "ghk_4920_4"
+  },
+  {
+    "nameStarts": "ghk_weekend_ios_",
+    "min": 5,
+    "max": 5,
+    "copyFrom": "../ghk_4920_5",
+    "replaceInFile": "ghk_4920_5"
+  },
+  {
+    "nameStarts": "ghk_weekend_ios_",
+    "min": 6,
+    "max": 6,
+    "copyFrom": "../ghk_4920_6",
+    "replaceInFile": "ghk_4920_6"
+  }
+]
