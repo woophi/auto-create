@@ -109,7 +109,7 @@ const runConfig = async (cfg: RepoConfig) => {
       copyDirectoryRecursiveSync(cfg.copyFrom, `../${repoName}`, ['node_modules', '.git']);
       replaceInFile(`../${repoName}/package.json`, cfg.replaceInFile, repoName);
       replaceInFile(`../${repoName}/src/ls/index.ts`, cfg.replaceInFile, repoName);
-      // replaceInFile(`../${repoName}/src/utils/events.ts`, 'var1', `var${index}`);
+      replaceInFile(`../${repoName}/src/utils/events.ts`, 'var1', `var${index}`);
       replaceInFile(`../${repoName}/src/App.tsx`, '_var1', `_var${index}`);
       // replaceInFile(`../${repoName}/src/thx/ThxLayout.tsx`, '_var1', `_var${index}`);
       // replaceInFile(`../${repoName}/src/App.tsx`, '4920_', `may_ios_`);
