@@ -2,7 +2,7 @@
   {
     "nameStarts": "ghk_jn_and_",
     "min": 1,
-    "max": 6,
+    "max": 3,
     "copyFrom": "../ghk_4920_3",
     "replaceInFile": "ghk_4920_3"
   },
