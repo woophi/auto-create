@@ -1,16 +1,16 @@
 [
   {
-    "nameStarts": "ghk_5274_",
+    "nameStarts": "ghk_jn_and_",
     "min": 1,
-    "max": 4,
-    "copyFrom": "../ghk_5274_1",
-    "replaceInFile": "ghk_5274_1"
+    "max": 6,
+    "copyFrom": "../ghk_4920_3",
+    "replaceInFile": "ghk_4920_3"
   },
   {
-    "nameStarts": "ghk_5275_",
+    "nameStarts": "ghk_jnm_and_",
     "min": 1,
-    "max": 4,
-    "copyFrom": "../ghk_5275_1",
-    "replaceInFile": "ghk_5275_1"
+    "max": 3,
+    "copyFrom": "../ghk_4920_6",
+    "replaceInFile": "ghk_4920_6"
   }
 ]
