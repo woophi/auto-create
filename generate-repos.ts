@@ -112,7 +112,7 @@ const runConfig = async (cfg: RepoConfig) => {
       replaceInFile(`../${repoName}/src/utils/events.ts`, 'var1', `var${index}`);
       replaceInFile(`../${repoName}/src/App.tsx`, '_var1', `_var${index}`);
       // replaceInFile(`../${repoName}/src/thx/ThxLayout.tsx`, '_var1', `_var${index}`);
-      replaceInFile(`../${repoName}/src/App.tsx`, '5380_', `5393_`);
+      replaceInFile(`../${repoName}/src/App.tsx`, '5191_', `5192_`);
 
       await commitChanges(repoName);
     }
