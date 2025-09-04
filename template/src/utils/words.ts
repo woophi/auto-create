@@ -18,3 +18,7 @@ export const getWordEnding = (count: number, forms: [string, string, string]): s
 
   return forms[2];
 };
+
+export const formatWord = (count: number, wordForms: [string, string, string]): string => {
+  return `${count.toLocaleString('ru')} ${getWordEnding(count, wordForms)}`;
+};
