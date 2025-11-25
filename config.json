@@ -1,23 +1,16 @@
 [
   {
-    "nameStarts": "ghk_6833_",
+    "nameStarts": "ghk_6832_",
     "min": 1,
-    "max": 1,
+    "max": 3,
     "copyFrom": "../ghk_6832_1",
     "replaceInFile": "ghk_6832_1"
   },
   {
     "nameStarts": "ghk_6833_",
-    "min": 2,
-    "max": 2,
+    "min": 1,
+    "max": 3,
     "copyFrom": "../ghk_6832_2",
     "replaceInFile": "ghk_6832_2"
-  },
-  {
-    "nameStarts": "ghk_6833_",
-    "min": 3,
-    "max": 3,
-    "copyFrom": "../ghk_6833_1",
-    "replaceInFile": "ghk_6833_1"
   }
 ]
