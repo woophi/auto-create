@@ -1,6 +1,6 @@
-import { ButtonMobile } from '@alfalab/core-components/button/mobile';
-import { Gap } from '@alfalab/core-components/gap';
-import { Typography } from '@alfalab/core-components/typography';
+import { Button } from '@alfalab/core-components/button/cssm';
+import { Gap } from '@alfalab/core-components/gap/cssm';
+import { Typography } from '@alfalab/core-components/typography/cssm';
 import { useEffect, useState } from 'react';
 import { LS, LSKeys } from './ls';
 import { appSt } from './style.css';
@@ -52,9 +52,9 @@ export const App = () => {
       <Gap size={96} />
 
       <div className={appSt.bottomBtn}>
-        <ButtonMobile loading={loading} block view="primary" onClick={submit} hint={err}>
+        <Button loading={loading} block view="primary" onClick={submit} hint={err}>
           Создать шаблон оплаты
-        </ButtonMobile>
+        </Button>
       </div>
     </>
   );

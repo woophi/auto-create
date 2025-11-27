@@ -1,5 +1,5 @@
-import { ButtonMobile } from '@alfalab/core-components/button/mobile';
-import { Typography } from '@alfalab/core-components/typography';
+import { Button } from '@alfalab/core-components/button/cssm';
+import { Typography } from '@alfalab/core-components/typography/cssm';
 import sparkles from '../assets/sparkles.png';
 import { appSt } from '../style.css';
 import { thxSt } from './style.css';
@@ -20,9 +20,9 @@ export const ThxLayout = () => {
         </Typography.Text>
       </div>
       <div className={appSt.bottomBtn}>
-        <ButtonMobile block view="secondary" href={link}>
+        <Button block view="secondary" href={link}>
           Попробовать еще раз
-        </ButtonMobile>
+        </Button>
       </div>
     </>
   );
