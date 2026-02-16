@@ -9,7 +9,6 @@ import { sendDataToGA } from './utils/events';
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
-  const [err, setError] = useState('');
   const [thxShow, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
 
   useEffect(() => {
@@ -19,10 +18,6 @@ export const App = () => {
   }, []);
 
   const submit = () => {
-    if (!accountNumber) {
-      setError('Укажите номер лицевого счёта');
-      return;
-    }
     setLoading(true);
 
     sendDataToGA({
@@ -52,7 +47,7 @@ export const App = () => {
       <Gap size={96} />
 
       <div className={appSt.bottomBtn}>
-        <Button loading={loading} block view="primary" onClick={submit} hint={err}>
+        <Button loading={loading} block view="primary" onClick={submit}>
           Создать шаблон оплаты
         </Button>
       </div>
