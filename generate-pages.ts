@@ -41,7 +41,7 @@ const runPageCmd = async (cfg: RepoConfig) => {
 
   for (let index = cfg.min; index <= cfg.max; index++) {
     const repoName = `${cfg.nameStarts}${index}`;
-    console.debug(errorStyle('url'), `https://${owner}.github.io/${repoName}`);
+    console.debug(`https://${owner}.github.io/${repoName}`);
   }
 };
 
