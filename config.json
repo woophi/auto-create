@@ -1,7 +1,7 @@
 [
   {
     "nameStarts": "ghk_7204_",
-    "min": 1,
+    "min": 5,
     "max": 6,
     "copyFrom": "../ghk_7204_4",
     "replaceInFile": "ghk_7204_4"
