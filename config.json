@@ -1,9 +1,9 @@
 [
   {
     "nameStarts": "ghk_7554_",
-    "min": 2,
-    "max": 3,
-    "copyFrom": "../ghk_7554_1",
-    "replaceInFile": "ghk_7554_1"
+    "min": 4,
+    "max": 4,
+    "copyFrom": "../ghk_7554_3",
+    "replaceInFile": "ghk_7554_3"
   }
 ]
