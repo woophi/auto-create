@@ -40,7 +40,7 @@ export const App = () => {
   return (
     <>
       <div className={appSt.container}>
-        <Typography.TitleResponsive style={{ marginTop: '1rem' }} tag="h1" view="small" font="system" weight="semibold">
+        <Typography.TitleResponsive style={{ marginTop: '1rem' }} tag="h1" view="small" weight="semibold">
           Оплата ЖКУ
         </Typography.TitleResponsive>
       </div>
