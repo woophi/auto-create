@@ -24,7 +24,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 10
+          version: 11
           run_install: false
 
       - name: Get pnpm store directory
@@ -46,7 +46,7 @@ jobs:
         run: pnpm i
 
       - name: Build
-        run: npm run build
+        run: pnpm build
 
       - name: Deploy to gh pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
