@@ -1,9 +1,9 @@
 [
   {
-    "nameStarts": "ghk_7843_",
+    "nameStarts": "ghk_7953_",
     "min": 1,
-    "max": 4,
-    "copyFrom": "./template",
-    "replaceInFile": "ghk_3870_1"
+    "max": 2,
+    "copyFrom": "../ghk_7796_1",
+    "replaceInFile": "ghk_7796_1"
   }
 ]
